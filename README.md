@@ -20,7 +20,7 @@ Demonstrar como funciona uma comunicação HTTPS com **autenticação mútua**, 
 ## 🚀 Como executar
 
 ```bash
-git clone https://github.com/SEU_USUARIO/mtls-lab.git
+git clone https://github.com/rodrigorosamuniz/mtls-lab.git
 cd mtls-lab
 python3 -m venv venv
 source venv/bin/activate
