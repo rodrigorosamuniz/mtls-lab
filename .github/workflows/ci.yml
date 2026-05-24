@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Compile Python modules
+        run: python -m compileall server.py client.py
+
+      - name: Generate certificates
+        run: ./generate_certs.sh
+
+      - name: Start mTLS server
+        run: |
+          python server.py &
+          echo $! > server.pid
+          sleep 3
+
+      - name: Reject client without certificate
+        run: |
+          if curl -fsS https://localhost:5000 --cacert certs/ca.crt; then
+            echo "Expected request without client certificate to fail"
+            exit 1
+          fi
+
+      - name: Accept client with certificate
+        run: |
+          curl -fsS https://localhost:5000 \
+            --cert certs/client.crt \
+            --key certs/client.key \
+            --cacert certs/ca.crt
