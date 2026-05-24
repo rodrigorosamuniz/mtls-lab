@@ -1,10 +1,17 @@
-# 🔐 Laboratório de mTLS com Python
+# 🔐 Laboratórios TLS e mTLS com Python
 
-Este repositório contém um laboratório prático para ensinar **mutual TLS (mTLS)** usando **Flask + Requests**, com certificados gerados via **OpenSSL**.
+Este repositório contém laboratórios práticos para ensinar **TLS**, **HTTPS** e **mutual TLS (mTLS)** usando Python, Docker e OpenSSL.
 
 ## 📚 Objetivo
 
-Demonstrar como funciona uma comunicação HTTPS com **autenticação mútua**, onde cliente e servidor **precisam apresentar certificados válidos**.
+Demonstrar como certificados digitais, autoridades certificadoras, HTTPS e autenticação mútua funcionam na prática.
+
+## 🧪 Laboratórios
+
+| Laboratório | Tema | Material |
+| --- | --- | --- |
+| TLS, certificados e HTTPS | HTTP vs HTTPS, CA local, certificado de servidor, SAN, cadeia de confiança e relação com Let's Encrypt | [Abrir lab](labs/tls-certificados-https/README.md) |
+| mTLS com Python | HTTPS com autenticação mútua entre cliente e servidor usando certificados | Arquivos na raiz do repositório |
 
 ---
 
@@ -17,7 +24,7 @@ Demonstrar como funciona uma comunicação HTTPS com **autenticação mútua**, 
 
 ---
 
-## 🚀 Como executar
+## 🚀 Como executar o lab mTLS da raiz
 
 ```bash
 git clone https://github.com/rodrigorosamuniz/mtls-lab.git
